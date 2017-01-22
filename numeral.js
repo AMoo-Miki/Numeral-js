@@ -17,7 +17,15 @@ var numeralFactory = function () {
         languages = {},
         currentLanguage = 'en',
         zeroFormat = null,
-        defaultFormat = '0,0';
+        defaultFormat = '0,0',
+        Ie12 = 1000000000000,
+        Ie9 = 1000000000,
+        Ie6 = 1000000,
+        Ie3 = 1000,
+        BigIe12 = 1000000000000n,
+        BigIe9 = 1000000000n,
+        BigIe6 = 1000000n,
+        BigIe3 = 1000n;
 
 
     /************************************
@@ -365,7 +373,7 @@ var numeralFactory = function () {
             abbrT = false, // force abbreviation to trillions
             abbrForce = false, // force abbreviation
             ord = '',
-            abs = Math.abs(value),
+            abs = value < 0 ? -value : value,
             w,
             precision,
             thousands,
@@ -376,7 +384,8 @@ var numeralFactory = function () {
         if (value === 0 && zeroFormat !== null) {
             return zeroFormat;
         } else {
-            var isExponent = 'number' === typeof value && value.toString().match(/e[+-]/);
+            var isBigInt = typeof value === 'bigint',
+                isExponent = 'number' === typeof value && value.toString().match(/e[+-]/);
             // see if we should use parentheses for negative number or if we should prefix with a sign
             // if both are present we default to parentheses
             if (format.indexOf('(') > -1) {
@@ -404,22 +413,22 @@ var numeralFactory = function () {
                     format = format.replace('a', '');
                 }
 
-                if (abs >= Math.pow(10, 12) && !abbrForce || abbrT) {
+                if (abs >= Ie12 && !abbrForce || abbrT) {
                     // trillion
                     abbr = abbr + languages[currentLanguage].abbreviations.trillion;
-                    value = value / Math.pow(10, 12);
-                } else if (abs < Math.pow(10, 12) && abs >= Math.pow(10, 9) && !abbrForce || abbrB) {
+                    value = value / (isBigInt ? BigIe12 : Ie12);
+                } else if (abs < Ie12 && abs >= Ie9 && !abbrForce || abbrB) {
                     // billion
                     abbr = abbr + languages[currentLanguage].abbreviations.billion;
-                    value = value / Math.pow(10, 9);
-                } else if (abs < Math.pow(10, 9) && abs >= Math.pow(10, 6) && !abbrForce || abbrM) {
+                    value = value / (isBigInt ? BigIe9 : Ie9);
+                } else if (abs < Ie9 && abs >= Ie6 && !abbrForce || abbrM) {
                     // million
                     abbr = abbr + languages[currentLanguage].abbreviations.million;
-                    value = value / Math.pow(10, 6);
-                } else if (abs < Math.pow(10, 6) && abs >= Math.pow(10, 3) && !abbrForce || abbrK) {
+                    value = value / (isBigInt ? BigIe6 : Ie6);
+                } else if (abs < Ie6 && abs >= Ie3 && !abbrForce || abbrK) {
                     // thousand
                     abbr = abbr + languages[currentLanguage].abbreviations.thousand;
-                    value = value / Math.pow(10, 3);
+                    value = value / (isBigInt ? BigIe3 : Ie3);
                 }
             }
 
@@ -445,7 +454,7 @@ var numeralFactory = function () {
             precision = format.split('.')[1];
             thousands = format.indexOf(',');
 
-            if (precision && !isExponent) {
+            if (precision && !isExponent && !isBigInt) {
                 if (precision.indexOf('[') > -1) {
                     precision = precision.replace(']', '');
                     precision = precision.split('[');
@@ -456,7 +465,7 @@ var numeralFactory = function () {
 
                 w = d.split('.')[0];
 
-                if (d.indexOf('.') != -1 && d.split('.')[1].length) {
+                if (d.indexOf('.') !== -1 && d.split('.')[1].length) {
                     d = languages[currentLanguage].delimiters.decimal + d.split('.')[1];
                 } else {
                     d = '';
@@ -467,7 +476,7 @@ var numeralFactory = function () {
                 }
             } else {
                 // don't case exponents to a fixed value, just cast them to strings
-                if (isExponent) w = value.toString();
+                if (isExponent || isBigInt) w = value.toString();
                 else w = toFixed(value, 0, roundingFunction);
             }
 
@@ -502,7 +511,7 @@ var numeralFactory = function () {
             input = numeral.fn.unformat(input);
         }
 
-        return new Numeral(Number(input));
+        return new Numeral(typeof input === 'bigint' ? input : Number(input));
     };
 
     // version number
@@ -711,7 +720,7 @@ var numeralFactory = function () {
         },
 
         set : function (value) {
-            this._value = Number(value);
+            this._value = typeof value === 'bigint' ? value : Number(value);
             return this;
         },
 
