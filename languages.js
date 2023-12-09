@@ -5,22 +5,22 @@ module.exports = [
     lang: {
       delimiters: {
         thousands: ' ',
-        decimal: ','
+        decimal: ',',
       },
       abbreviations: {
         thousand: 'k',
         million: ' mln',
         billion: ' mld',
-        trillion: ' bln'
+        trillion: ' bln',
       },
-      ordinal: function(number) {
+      ordinal: function (number) {
         var remainder = number % 100;
         return (number !== 0 && remainder <= 1) || remainder === 8 || remainder >= 20 ? 'ste' : 'de';
       },
       currency: {
-        symbol: '€ '
-      }
-    }
+        symbol: '€ ',
+      },
+    },
   },
   {
     id: 'chs',
@@ -28,21 +28,21 @@ module.exports = [
     lang: {
       delimiters: {
         thousands: ',',
-        decimal: '.'
+        decimal: '.',
       },
       abbreviations: {
         thousand: '千',
         million: '百万',
         billion: '十亿',
-        trillion: '兆'
+        trillion: '兆',
       },
-      ordinal: function(number) {
+      ordinal: function (number) {
         return '.';
       },
       currency: {
-        symbol: '¥'
-      }
-    }
+        symbol: '¥',
+      },
+    },
   },
   {
     id: 'cs',
@@ -50,21 +50,21 @@ module.exports = [
     lang: {
       delimiters: {
         thousands: ' ',
-        decimal: ','
+        decimal: ',',
       },
       abbreviations: {
         thousand: 'tis.',
         million: 'mil.',
         billion: 'b',
-        trillion: 't'
+        trillion: 't',
       },
-      ordinal: function() {
+      ordinal: function () {
         return '.';
       },
       currency: {
-        symbol: 'Kč'
-      }
-    }
+        symbol: 'Kč',
+      },
+    },
   },
   {
     id: 'da-dk',
@@ -72,21 +72,21 @@ module.exports = [
     lang: {
       delimiters: {
         thousands: '.',
-        decimal: ','
+        decimal: ',',
       },
       abbreviations: {
         thousand: 'k',
         million: 'mio',
         billion: 'mia',
-        trillion: 'b'
+        trillion: 'b',
       },
-      ordinal: function(number) {
+      ordinal: function (number) {
         return '.';
       },
       currency: {
-        symbol: 'DKK'
-      }
-    }
+        symbol: 'DKK',
+      },
+    },
   },
   {
     id: 'de-ch',
@@ -94,21 +94,21 @@ module.exports = [
     lang: {
       delimiters: {
         thousands: ' ',
-        decimal: ','
+        decimal: ',',
       },
       abbreviations: {
         thousand: 'k',
         million: 'm',
         billion: 'b',
-        trillion: 't'
+        trillion: 't',
       },
-      ordinal: function(number) {
+      ordinal: function (number) {
         return '.';
       },
       currency: {
-        symbol: 'CHF'
-      }
-    }
+        symbol: 'CHF',
+      },
+    },
   },
   {
     id: 'de',
@@ -116,21 +116,21 @@ module.exports = [
     lang: {
       delimiters: {
         thousands: ' ',
-        decimal: ','
+        decimal: ',',
       },
       abbreviations: {
         thousand: 'k',
         million: 'm',
         billion: 'b',
-        trillion: 't'
+        trillion: 't',
       },
-      ordinal: function(number) {
+      ordinal: function (number) {
         return '.';
       },
       currency: {
-        symbol: '€'
-      }
-    }
+        symbol: '€',
+      },
+    },
   },
   {
     id: 'en-gb',
@@ -138,22 +138,22 @@ module.exports = [
     lang: {
       delimiters: {
         thousands: ',',
-        decimal: '.'
+        decimal: '.',
       },
       abbreviations: {
         thousand: 'k',
         million: 'm',
         billion: 'b',
-        trillion: 't'
+        trillion: 't',
       },
-      ordinal: function(number) {
+      ordinal: function (number) {
         var b = number % 10;
         return ~~((number % 100) / 10) === 1 ? 'th' : b === 1 ? 'st' : b === 2 ? 'nd' : b === 3 ? 'rd' : 'th';
       },
       currency: {
-        symbol: '£'
-      }
-    }
+        symbol: '£',
+      },
+    },
   },
   {
     id: 'es-ES',
@@ -161,24 +161,32 @@ module.exports = [
     lang: {
       delimiters: {
         thousands: '.',
-        decimal: ','
+        decimal: ',',
       },
       abbreviations: {
         thousand: 'k',
         million: 'mm',
         billion: 'b',
-        trillion: 't'
+        trillion: 't',
       },
-      ordinal: function(number) {
+      ordinal: function (number) {
         var b = number % 10;
         return b === 1 || b === 3
           ? 'er'
-          : b === 2 ? 'do' : b === 7 || b === 0 ? 'mo' : b === 8 ? 'vo' : b === 9 ? 'no' : 'to';
+          : b === 2
+          ? 'do'
+          : b === 7 || b === 0
+          ? 'mo'
+          : b === 8
+          ? 'vo'
+          : b === 9
+          ? 'no'
+          : 'to';
       },
       currency: {
-        symbol: '€'
-      }
-    }
+        symbol: '€',
+      },
+    },
   },
   {
     id: 'es',
@@ -186,24 +194,32 @@ module.exports = [
     lang: {
       delimiters: {
         thousands: '.',
-        decimal: ','
+        decimal: ',',
       },
       abbreviations: {
         thousand: 'k',
         million: 'mm',
         billion: 'b',
-        trillion: 't'
+        trillion: 't',
       },
-      ordinal: function(number) {
+      ordinal: function (number) {
         var b = number % 10;
         return b === 1 || b === 3
           ? 'er'
-          : b === 2 ? 'do' : b === 7 || b === 0 ? 'mo' : b === 8 ? 'vo' : b === 9 ? 'no' : 'to';
+          : b === 2
+          ? 'do'
+          : b === 7 || b === 0
+          ? 'mo'
+          : b === 8
+          ? 'vo'
+          : b === 9
+          ? 'no'
+          : 'to';
       },
       currency: {
-        symbol: '$'
-      }
-    }
+        symbol: '$',
+      },
+    },
   },
   {
     id: 'et',
@@ -211,21 +227,21 @@ module.exports = [
     lang: {
       delimiters: {
         thousands: ' ',
-        decimal: ','
+        decimal: ',',
       },
       abbreviations: {
         thousand: ' tuh',
         million: ' mln',
         billion: ' mld',
-        trillion: ' trl'
+        trillion: ' trl',
       },
-      ordinal: function(number) {
+      ordinal: function (number) {
         return '.';
       },
       currency: {
-        symbol: '€'
-      }
-    }
+        symbol: '€',
+      },
+    },
   },
   {
     id: 'fi',
@@ -233,21 +249,21 @@ module.exports = [
     lang: {
       delimiters: {
         thousands: ' ',
-        decimal: ','
+        decimal: ',',
       },
       abbreviations: {
         thousand: 'k',
         million: 'M',
         billion: 'G',
-        trillion: 'T'
+        trillion: 'T',
       },
-      ordinal: function(number) {
+      ordinal: function (number) {
         return '.';
       },
       currency: {
-        symbol: '€'
-      }
-    }
+        symbol: '€',
+      },
+    },
   },
   {
     id: 'fr-CA',
@@ -255,21 +271,21 @@ module.exports = [
     lang: {
       delimiters: {
         thousands: ' ',
-        decimal: ','
+        decimal: ',',
       },
       abbreviations: {
         thousand: 'k',
         million: 'M',
         billion: 'G',
-        trillion: 'T'
+        trillion: 'T',
       },
-      ordinal: function(number) {
+      ordinal: function (number) {
         return number === 1 ? 'er' : 'e';
       },
       currency: {
-        symbol: '$'
-      }
-    }
+        symbol: '$',
+      },
+    },
   },
   {
     id: 'fr-ch',
@@ -277,21 +293,21 @@ module.exports = [
     lang: {
       delimiters: {
         thousands: "'",
-        decimal: '.'
+        decimal: '.',
       },
       abbreviations: {
         thousand: 'k',
         million: 'm',
         billion: 'b',
-        trillion: 't'
+        trillion: 't',
       },
-      ordinal: function(number) {
+      ordinal: function (number) {
         return number === 1 ? 'er' : 'e';
       },
       currency: {
-        symbol: 'CHF'
-      }
-    }
+        symbol: 'CHF',
+      },
+    },
   },
   {
     id: 'fr',
@@ -299,21 +315,21 @@ module.exports = [
     lang: {
       delimiters: {
         thousands: ' ',
-        decimal: ','
+        decimal: ',',
       },
       abbreviations: {
         thousand: 'k',
         million: 'm',
         billion: 'b',
-        trillion: 't'
+        trillion: 't',
       },
-      ordinal: function(number) {
+      ordinal: function (number) {
         return number === 1 ? 'er' : 'e';
       },
       currency: {
-        symbol: '€'
-      }
-    }
+        symbol: '€',
+      },
+    },
   },
   {
     id: 'hu',
@@ -321,21 +337,21 @@ module.exports = [
     lang: {
       delimiters: {
         thousands: ' ',
-        decimal: ','
+        decimal: ',',
       },
       abbreviations: {
         thousand: 'E', // ezer
         million: 'M', // millió
         billion: 'Mrd', // milliárd
-        trillion: 'T' // trillió
+        trillion: 'T', // trillió
       },
-      ordinal: function(number) {
+      ordinal: function (number) {
         return '.';
       },
       currency: {
-        symbol: ' Ft'
-      }
-    }
+        symbol: ' Ft',
+      },
+    },
   },
   {
     id: 'it',
@@ -343,21 +359,21 @@ module.exports = [
     lang: {
       delimiters: {
         thousands: '.',
-        decimal: ','
+        decimal: ',',
       },
       abbreviations: {
         thousand: 'mila',
         million: 'mil',
         billion: 'b',
-        trillion: 't'
+        trillion: 't',
       },
-      ordinal: function(number) {
+      ordinal: function (number) {
         return 'º';
       },
       currency: {
-        symbol: '€'
-      }
-    }
+        symbol: '€',
+      },
+    },
   },
   {
     id: 'ja',
@@ -365,21 +381,21 @@ module.exports = [
     lang: {
       delimiters: {
         thousands: ',',
-        decimal: '.'
+        decimal: '.',
       },
       abbreviations: {
         thousand: '千',
         million: '百万',
         billion: '十億',
-        trillion: '兆'
+        trillion: '兆',
       },
-      ordinal: function(number) {
+      ordinal: function (number) {
         return '.';
       },
       currency: {
-        symbol: '¥'
-      }
-    }
+        symbol: '¥',
+      },
+    },
   },
   {
     id: 'nl-nl',
@@ -387,22 +403,22 @@ module.exports = [
     lang: {
       delimiters: {
         thousands: '.',
-        decimal: ','
+        decimal: ',',
       },
       abbreviations: {
         thousand: 'k',
         million: 'mln',
         billion: 'mrd',
-        trillion: 'bln'
+        trillion: 'bln',
       },
-      ordinal: function(number) {
+      ordinal: function (number) {
         var remainder = number % 100;
         return (number !== 0 && remainder <= 1) || remainder === 8 || remainder >= 20 ? 'ste' : 'de';
       },
       currency: {
-        symbol: '€ '
-      }
-    }
+        symbol: '€ ',
+      },
+    },
   },
   {
     id: 'pl',
@@ -410,21 +426,21 @@ module.exports = [
     lang: {
       delimiters: {
         thousands: ' ',
-        decimal: ','
+        decimal: ',',
       },
       abbreviations: {
         thousand: 'tys.',
         million: 'mln',
         billion: 'mld',
-        trillion: 'bln'
+        trillion: 'bln',
       },
-      ordinal: function(number) {
+      ordinal: function (number) {
         return '.';
       },
       currency: {
-        symbol: 'PLN'
-      }
-    }
+        symbol: 'PLN',
+      },
+    },
   },
   {
     id: 'pt-br',
@@ -432,21 +448,21 @@ module.exports = [
     lang: {
       delimiters: {
         thousands: '.',
-        decimal: ','
+        decimal: ',',
       },
       abbreviations: {
         thousand: 'mil',
         million: 'milhões',
         billion: 'b',
-        trillion: 't'
+        trillion: 't',
       },
-      ordinal: function(number) {
+      ordinal: function (number) {
         return 'º';
       },
       currency: {
-        symbol: 'R$'
-      }
-    }
+        symbol: 'R$',
+      },
+    },
   },
   {
     id: 'pt-pt',
@@ -454,21 +470,21 @@ module.exports = [
     lang: {
       delimiters: {
         thousands: ' ',
-        decimal: ','
+        decimal: ',',
       },
       abbreviations: {
         thousand: 'k',
         million: 'm',
         billion: 'b',
-        trillion: 't'
+        trillion: 't',
       },
-      ordinal: function(number) {
+      ordinal: function (number) {
         return 'º';
       },
       currency: {
-        symbol: '€'
-      }
-    }
+        symbol: '€',
+      },
+    },
   },
   {
     id: 'ru-UA',
@@ -476,24 +492,24 @@ module.exports = [
     lang: {
       delimiters: {
         thousands: ' ',
-        decimal: ','
+        decimal: ',',
       },
       abbreviations: {
         thousand: 'тыс.',
         million: 'млн',
         billion: 'b',
-        trillion: 't'
+        trillion: 't',
       },
-      ordinal: function() {
+      ordinal: function () {
         // not ideal, but since in Russian it can taken on
         // different forms (masculine, feminine, neuter)
         // this is all we can do
         return '.';
       },
       currency: {
-        symbol: '\u20B4'
-      }
-    }
+        symbol: '\u20B4',
+      },
+    },
   },
   {
     id: 'ru',
@@ -501,24 +517,24 @@ module.exports = [
     lang: {
       delimiters: {
         thousands: ' ',
-        decimal: ','
+        decimal: ',',
       },
       abbreviations: {
         thousand: 'тыс.',
         million: 'млн',
         billion: 'b',
-        trillion: 't'
+        trillion: 't',
       },
-      ordinal: function() {
+      ordinal: function () {
         // not ideal, but since in Russian it can taken on
         // different forms (masculine, feminine, neuter)
         // this is all we can do
         return '.';
       },
       currency: {
-        symbol: 'руб.'
-      }
-    }
+        symbol: 'руб.',
+      },
+    },
   },
   {
     id: 'sk',
@@ -526,21 +542,21 @@ module.exports = [
     lang: {
       delimiters: {
         thousands: ' ',
-        decimal: ','
+        decimal: ',',
       },
       abbreviations: {
         thousand: 'tis.',
         million: 'mil.',
         billion: 'b',
-        trillion: 't'
+        trillion: 't',
       },
-      ordinal: function() {
+      ordinal: function () {
         return '.';
       },
       currency: {
-        symbol: '€'
-      }
-    }
+        symbol: '€',
+      },
+    },
   },
   {
     id: 'th',
@@ -548,21 +564,21 @@ module.exports = [
     lang: {
       delimiters: {
         thousands: ',',
-        decimal: '.'
+        decimal: '.',
       },
       abbreviations: {
         thousand: 'พัน',
         million: 'ล้าน',
         billion: 'พันล้าน',
-        trillion: 'ล้านล้าน'
+        trillion: 'ล้านล้าน',
       },
-      ordinal: function(number) {
+      ordinal: function (number) {
         return '.';
       },
       currency: {
-        symbol: '฿'
-      }
-    }
+        symbol: '฿',
+      },
+    },
   },
   {
     id: 'tr',
@@ -570,15 +586,15 @@ module.exports = [
     lang: {
       delimiters: {
         thousands: '.',
-        decimal: ','
+        decimal: ',',
       },
       abbreviations: {
         thousand: 'bin',
         million: 'milyon',
         billion: 'milyar',
-        trillion: 'trilyon'
+        trillion: 'trilyon',
       },
-      ordinal: (function() {
+      ordinal: (function () {
         var suffixes = {
           1: "'inci",
           5: "'inci",
@@ -602,26 +618,26 @@ module.exports = [
           30: "'uncu",
 
           60: "'ıncı",
-          90: "'ıncı"
+          90: "'ıncı",
         };
 
-        return function(number) {
+        return function (number) {
           if (number === 0) {
             // special case for zero
             return "'ıncı";
           }
 
           var a = number % 10,
-            b = number % 100 - a,
+            b = (number % 100) - a,
             c = number >= 100 ? 100 : null;
 
           return suffixes[a] || suffixes[b] || suffixes[c];
         };
       })(),
       currency: {
-        symbol: '\u20BA'
-      }
-    }
+        symbol: '\u20BA',
+      },
+    },
   },
   {
     id: 'uk-UA',
@@ -629,23 +645,23 @@ module.exports = [
     lang: {
       delimiters: {
         thousands: ' ',
-        decimal: ','
+        decimal: ',',
       },
       abbreviations: {
         thousand: 'тис.',
         million: 'млн',
         billion: 'млрд',
-        trillion: 'блн'
+        trillion: 'блн',
       },
-      ordinal: function() {
+      ordinal: function () {
         // not ideal, but since in Ukrainian it can taken on
         // different forms (masculine, feminine, neuter)
         // this is all we can do
         return '';
       },
       currency: {
-        symbol: '\u20B4'
-      }
-    }
-  }
+        symbol: '\u20B4',
+      },
+    },
+  },
 ];
